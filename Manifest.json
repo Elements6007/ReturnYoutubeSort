@@ -1,0 +1,23 @@
+{
+    "name": "returnyoutubesortbyoldest",
+    "version": "0.1.0",
+    "manifest_version": 3,
+    "permissions": ["storage","tabs"],
+    "background": {
+        "service_worker": "background.js"
+      },
+    "description" : "returns youtube sort by oldest",
+    "host_permissions": ["*://*.youtube.com/*"],
+    "content_scripts" : [
+       {
+        "matches": [
+            "*://youtube.com/*",
+            "*://www.youtube.com/*",
+            "*://m.youtube.com/*"
+          ],
+          "run_at": "document_end",
+           "js" : ["contentScript.js"]
+       }
+
+    ]
+}
