@@ -2,26 +2,19 @@
 
 let youtubeLeftControls, youtubePlayer;
 
-window.addEventListener ("load", waitTillLoaded, false);
-
-function waitTillLoaded () {
-  loaded = "true";
-}
-
-chrome.runtime.onMessage.addListener((obj, sender, response) => {
-  const { type, value, videoId } = obj;
-//this recieves the message sent from background.js telling that it is at the correct url
-  if (type === "NEW" && loaded === "true") {
-    currentVideo = videoId;
-    videosLoaded();
-  }
-})
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+    // listen for messages sent from background.js
+    if (request.message === 'new') {
+      videosLoaded();
+    }
+});
 
 // my brain hurts
 const videosLoaded = async () => {
-  console.log("thisisworkingbtw");
+  console.log("thisisworking");
 
-  const oldestButtonExists = document.createElement("oldest-btn")[0];
+  /*const oldestButtonExists = document.createElement("oldest-btn")[0];
 
   if (!oldestButtonExists){   
   const oldestButton = document.createElement("img");
@@ -33,9 +26,9 @@ const videosLoaded = async () => {
   youtubePlayer = document.getElementsByClassName("yt-chip-cloud-chip-renderer")[0];
 
   youtubeLeftControls.appendChild(oldestButton);
-
- }
-}
+  //I honestly have no freaking idea what this does tbh.
+ }*/
+};
 
 
 videosLoaded();

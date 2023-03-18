@@ -7,7 +7,11 @@
         "service_worker": "background.js"
       },
     "description" : "returns youtube sort by oldest",
-    "host_permissions": ["*://*.youtube.com/*"],
+    "externally_connectable": {
+      "matches": ["*://youtube.com/*",
+                  "*://m.youtube.com/*",
+                  "*://www.youtube.com/*"]
+    },
     "content_scripts" : [
        {
         "matches": [
@@ -16,7 +20,8 @@
             "*://m.youtube.com/*"
           ],
           "run_at": "document_end",
-           "js" : ["contentScript.js"]
+           "js" : ["contentScript.js"],
+           "css" : ["css.css"]
        }
 
     ]
