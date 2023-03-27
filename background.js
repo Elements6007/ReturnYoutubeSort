@@ -10,5 +10,14 @@ chrome.tabs.onUpdated.addListener(
         url: changeInfo.url
       })
     }
+
+    if (tab.url && tab.url.includes("/featured")) {
+      // url has changed; do something here
+      // like send message to content script
+      chrome.tabs.sendMessage( tabId, {
+        message: 'FORBIDDEN',
+        url: changeInfo.url
+      })
+    }
   }
 );
