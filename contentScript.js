@@ -13,21 +13,17 @@ chrome.runtime.onMessage.addListener(
 // my brain hurts
 const videosLoaded = async () => {
   console.log("thisisworking");
+  
+  //reverses contents using CSS
+  // width and padding forces yt to load all videos
+  document.getElementById("#contents").style.width = "100%"; // should be #contents.ytd-rich-grid-renderer
+  document.getElementById("#contents.ytd-rich-grid-renderer").style.paddingTop = "100%";
+  document.getElementById("#contents.ytd-rich-grid-renderer").style.display = "flex";
+  document.getElementById("#contents.ytd-rich-grid-renderer").style.flexWrap = "wrap";
+  document.getElementById("#contents.ytd-rich-grid-renderer").style.justifyContent = "flex-start";
+  document.getElementById("#contents.ytd-rich-grid-renderer").style.flexDirection = "column-reverse";
 
-  /*const oldestButtonExists = document.createElement("oldest-btn")[0];
-
-  if (!oldestButtonExists){   
-  const oldestButton = document.createElement("img");
-  oldestButton.src = chrome.runtime.getURL("assets/button.png");
-  oldestButton.className = "ytp-button " + " oldest-btn";
-  oldestButton.title = "Click to scroll to bottom of page";
-
-  youtubeLeftControls = document.getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[1];
-  youtubePlayer = document.getElementsByClassName("yt-chip-cloud-chip-renderer")[0];
-
-  youtubeLeftControls.appendChild(oldestButton);
-  //I honestly have no freaking idea what this does tbh.
- }*/
+  document.getElementById("#contents").style.flexDirection = "row-reverse";
 };
 
 
