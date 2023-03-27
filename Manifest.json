@@ -20,8 +20,7 @@
             "*://m.youtube.com/*"
           ],
           "run_at": "document_end",
-           "js" : ["contentScript.js"],
-           "css" : ["css.css"]
+           "js" : ["contentScript.js"]
        }
 
     ]
