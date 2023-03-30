@@ -1,4 +1,6 @@
 (() => {
+
+  let addbutton;
 //reverses content order
 var styles = `
 #contents.ytd-rich-grid-renderer {
@@ -33,7 +35,20 @@ var stylesrestore = `
   // my brain hurts
   const videosLoaded = async () => {
     console.log("thisisworking");
-    buttonPressed();
+    const oldestBtnExists = document.getElementsByClassName("oldest-btn")[0];
+
+    if (!oldestBtnExists) {
+      const oldestBtn = document.createElement("img");
+
+      oldestBtn.src = chrome.runtime.getURL("assets/button.png");
+      oldestBtn.className = "ytp-button " + "oldest-btn";
+      oldestBtn.title = "Click to bookmark current timestamp";
+
+      addbutton = document.getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[0];
+
+      addbutton.appendChild(oldestBtn);
+      oldestBtn.addEventListener("click", buttonPressed);
+    }
   };
 
   const scriptStop = async () => {
