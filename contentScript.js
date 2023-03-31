@@ -1,6 +1,7 @@
 (() => {
 
-  let addbutton;
+  let addbutton, addbuttoninterior;
+  let i = 0;
 //reverses content order
 var styles = `
 #contents.ytd-rich-grid-renderer {
@@ -37,25 +38,37 @@ var stylesrestore = `
     console.log("thisisworking");
     const oldestBtnExists = document.getElementsByClassName("oldest-btn")[0];
 
-    if (!oldestBtnExists) {
-      const oldestBtn = document.createElement("img");
-
-      oldestBtn.src = chrome.runtime.getURL("assets/button.png");
-      oldestBtn.className = "ytp-button " + "oldest-btn";
-      oldestBtn.title = "Click to bookmark current timestamp";
-
-      addbutton = document.getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[0];
-
+    if (!oldestBtnExists && i < 1) {
+      const oldestBtn = document.createElement("yt-chip-cloud-chip-renderer");
+      // no longer needs image
+      //oldestBtn.src = chrome.runtime.getURL("assets/button.jpg");
+      oldestBtn.className = "style-scope yt-chip-cloud-chip-renderer";
+      oldestBtn.setAttribute("chip-style", "STYLE_DEFAULT")
+      oldestBtn.id = "oldest-btn";
+      addbutton = document.getElementById("chips");
       addbutton.appendChild(oldestBtn);
+
+      //commented out for now
+    /*const oldestBtninterior = document.createElement("yt-chip-cloud-chip-renderer");
+      addbuttoninterior = document.getElementById("oldest-btn");
+      oldestBtninterior.className = "ytp-button " + "oldest-btn-int";
+      oldestBtninterior.innerHTML = "Oldest";
+
+      addbuttoninterior.appendChild(oldestBtninterior);*/
       oldestBtn.addEventListener("click", buttonPressed);
+      //increments i so if statement parameters fail if ran more than once.
+      i++;
     }
   };
 
   const scriptStop = async () => {
-    console.log("script needs to stop");
+    console.log("script stop");
     var styleSheet = document.createElement("style")
     styleSheet.innerText = stylesrestore
     document.head.appendChild(styleSheet)
+    const removeBtn = document.getElementsByClassName("oldest-btn");
+
+  
   };
 
   const buttonPressed = async () => {
@@ -63,5 +76,5 @@ var stylesrestore = `
     styleSheet.innerText = styles
     document.head.appendChild(styleSheet)
   };
-
+videosLoaded();
 })();
