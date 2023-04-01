@@ -41,9 +41,10 @@
   const videosLoaded = async () => {
     console.log("thisisworking");
     const oldestBtnExists = document.getElementById("oldest-btn")
-
+    
         
     if (!oldestBtnExists) {
+      setTimeout(function() {
       console.log("creating button");
       const oldestBtn = document.createElement("yt-chip-cloud-chip-renderer");
 
@@ -55,6 +56,7 @@
 
 
       oldestBtn.addEventListener("click", buttonPressed);
+      }, 1000)
     }
   };
 
@@ -79,7 +81,7 @@
     if (type === "NEW") {
       videosLoaded();
     } else {
-      //scriptStop();
+      scriptStop();
     }
   });
 //videosLoaded();
