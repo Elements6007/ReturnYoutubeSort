@@ -1,53 +1,43 @@
 (() => {
 
-  let addbutton, addbuttoninterior;
+  let addbutton;
 
 
-  //reverses content order
-  var styles = `
-#contents.ytd-rich-grid-renderer {
-    flex-direction: column-reverse;
-}
+var styles = `
+ #contents.ytd-rich-grid-renderer {
+     flex-direction: column-reverse;
+ }
 
-#contents {
-    flex-direction: row-reverse;
-}
-`
-  //restores content order after leaving /videos
-  var stylesrestore = `
-#contents.ytd-rich-grid-renderer {
-  flex-direction: column;
-  
-  #contents {
-    flex-direction: row;
+ #contents {
+     flex-direction: row-reverse;
  }`
 
+var stylesrestore = `
+ #contents.ytd-rich-grid-renderer {
+   flex-direction: column;
+  
+ #contents {
+   flex-direction: row;
+ }`
 
-
-  chrome.runtime.onMessage.addListener(
-    function (request, sender, sendResponse) {
-      if (request.message === 'new') {
-         videosLoaded();
-      }
-      if (request.message === 'no') {
-        scriptStop();
-      }
-    });
-  // my brain hurts
   const videosLoaded = async () => {
     console.log("thisisworking");
-    const oldestBtnExists = document.getElementById("oldest-btn");
+    const oldestBtnExists = document.getElementById("oldest-btn")
+    
+        
     if (!oldestBtnExists) {
+      setTimeout(function() {
       console.log("creating button");
       const oldestBtn = document.createElement("yt-chip-cloud-chip-renderer");
 
-      oldestBtn.className = "style-scope yt-chip-cloud-chip-renderer";
-      oldestBtn.setAttribute("chip-style", "STYLE_DEFAULT")
+      oldestBtn.className = "style-scope " + "yt-chip-cloud-chip-renderer " + "oldest-btn";
+      oldestBtn.setAttribute("chip-style", "STYLE_DEFAULT");
       oldestBtn.id = "oldest-btn";
-      addbutton = document.getElementById("chips");
+      addbutton = document.querySelectorAll("#chips")[1];
       addbutton.appendChild(oldestBtn);
 
       oldestBtn.addEventListener("click", buttonPressed);
+      }, 1000)
     }
   };
 
@@ -56,14 +46,22 @@
     var styleSheet = document.createElement("style")
     styleSheet.innerText = stylesrestore
     document.head.appendChild(styleSheet)
-    const removeBtn = document.getElementById("oldest-btn");
-    removeBtn.remove();
   };
 
   const buttonPressed = async () => {
     var styleSheet = document.createElement("style")
-    styleSheet.innerText = styles
+    styleSheet.innerText = styles;
     document.head.appendChild(styleSheet)
   };
-videosLoaded();
+
+  chrome.runtime.onMessage.addListener((obj, sender, response) => {
+    const { type, value, videoId } = obj;
+
+    if (type === "NEW") {
+      videosLoaded();
+    } else {
+      scriptStop();
+    }
+  });
+
 })();
