@@ -8,20 +8,10 @@
         "service_worker": "background.js"
       },
     "description" : "returns youtube sort by oldest",
-    "externally_connectable": {
-      "matches": ["*://youtube.com/*",
-                  "*://m.youtube.com/*",
-                  "*://www.youtube.com/*"]
-    },
     "content_scripts" : [
        {
-        "matches": [
-            "*://youtube.com/*",
-            "*://www.youtube.com/*",
-            "*://m.youtube.com/*"
-          ],
-          "run_at": "document_end",
-           "js" : ["contentScript.js"]
+        "matches": ["https://*.youtube.com/*"],
+        "js" : ["contentScript.js"]
        }
 
     ],

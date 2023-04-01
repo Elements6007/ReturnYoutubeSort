@@ -1,9 +1,9 @@
-# return Youtube sort by oldest
+# Return Youtube sort by oldest
  Return Youtube Sort By Oldest
 
 
-## Current issues
-- stability is still flakey
+## Known current issues
+- stability is REALLY flakey, if button does not show up just reload the page and it should show
 
 
 ## HELP WANTED

@@ -7,7 +7,7 @@ chrome.tabs.onUpdated.addListener(
       })
     } else {
       chrome.tabs.sendMessage( tabId, {
-        message: 'FORBIDDEN'
+        message: 'no'
       })
     }
   }
