@@ -1,43 +1,25 @@
 (() => {
 
-  let addbutton, addbuttoninterior;
+  let addbutton;
 
 
-  //reverses content order
-  var styles = `
-#contents.ytd-rich-grid-renderer {
-    flex-direction: column-reverse;
-}
+var styles = `
+ #contents.ytd-rich-grid-renderer {
+     flex-direction: column-reverse;
+ }
 
-#contents {
-    flex-direction: row-reverse;
-}
-`
-  //restores content order after leaving /videos
-  var stylesrestore = `
-#contents.ytd-rich-grid-renderer {
-  flex-direction: column;
-  
-  #contents {
-    flex-direction: row;
+ #contents {
+     flex-direction: row-reverse;
  }`
 
+var stylesrestore = `
+ #contents.ytd-rich-grid-renderer {
+   flex-direction: column;
+  
+ #contents {
+   flex-direction: row;
+ }`
 
-
-
-
-
-  /*chrome.runtime.onMessage.addListener(
-    function (request, sender, sendResponse) {
-      if (request.message === 'new') {
-         videosLoaded();
-        
-      }
-      if (request.message === 'no') {
-        scriptStop();
-      }
-    });*/
-  // my brain hurts
   const videosLoaded = async () => {
     console.log("thisisworking");
     const oldestBtnExists = document.getElementById("oldest-btn")
@@ -54,7 +36,6 @@
       addbutton = document.querySelectorAll("#chips")[1];
       addbutton.appendChild(oldestBtn);
 
-
       oldestBtn.addEventListener("click", buttonPressed);
       }, 1000)
     }
@@ -65,8 +46,6 @@
     var styleSheet = document.createElement("style")
     styleSheet.innerText = stylesrestore
     document.head.appendChild(styleSheet)
-    //const removeBtn = document.getElementById("oldest-btn");
-    //removeBtn.remove();
   };
 
   const buttonPressed = async () => {
@@ -84,5 +63,5 @@
       scriptStop();
     }
   });
-//videosLoaded();
+
 })();
