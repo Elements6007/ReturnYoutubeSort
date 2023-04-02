@@ -1,26 +1,18 @@
 {
-    "name": "returnyoutubesortbyoldest",
+    "name": "Sort By: Oldest",
     "version": "1.0.0",
     "manifest_version": 3,
-    "permissions": ["storage","tabs"],
+    "permissions": ["tabs"],
     "host_permissions": ["https://*.youtube.com/*"],
     "background": {
         "service_worker": "background.js"
       },
-    "description" : "returns youtube sort by oldest",
+    "description" : "Returns YouYube Sort by Oldest",
     "content_scripts" : [
        {
         "matches": ["https://*.youtube.com/*"],
         "js" : ["contentScript.js"]
        }
 
-    ],
-    "web_accessible_resources": [
-      {
-        "resources": [
-          "assets/button.jpg"
-        ],
-        "matches": ["https://*.youtube.com/*"]
-      }
     ]
 }
