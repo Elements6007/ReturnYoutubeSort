@@ -1,6 +1,6 @@
 {
     "name": "returnyoutubesortbyoldest",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "manifest_version": 3,
     "permissions": ["storage","tabs"],
     "host_permissions": ["https://*.youtube.com/*"],
