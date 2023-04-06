@@ -3,7 +3,9 @@
  Return Youtube Sort By Oldest
  
  
-https://user-images.githubusercontent.com/88860704/229323031-c7f71a07-1460-4b9b-8d73-92af220fa650.mov
+
+
+https://user-images.githubusercontent.com/88860704/230260376-9384e536-cb85-45e6-9364-c26626bfd414.mp4
 
 
 ### Known current issues
@@ -21,7 +23,6 @@ Basically when `/videos` is found in the url it activates `contentScript.js`. It
 - Hopefully this extension will become available in the WebStore but its obviously not good enough to 'ship', therefore you must add it manually 
 
 ### HELP WANTED
-- add text to button
 - reverse engineer api or use animations to cover loading time, if possible.
 - i obviously dont know javascript
 
