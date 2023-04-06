@@ -7,7 +7,7 @@
     "background": {
         "service_worker": "background.js"
       },
-    "description" : "Returns YouYube Sort by Oldest",
+    "description" : "Return YouTube Sort by Oldest",
     "content_scripts" : [
        {
         "matches": ["https://*.youtube.com/*"],
