@@ -38,13 +38,13 @@ var stylesrestore = `
 
       oldestBtn.addEventListener("click", buttonPressed);
 
-      const ytStringBtn = document.getElementById("oldest-btn");
       const text = document.querySelectorAll("#oldest-btn #text")[0];
       
       text.removeAttribute("is-empty");
+      text.innerHTML = "Sort by: Oldest";
       
       if (!text) {
-        alert("RETURN SORT CRITICAL ERROR!");
+        console.log("text missing!");
       }
       }, 1000)
 
