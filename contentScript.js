@@ -37,7 +37,17 @@ var stylesrestore = `
       addbutton.appendChild(oldestBtn);
 
       oldestBtn.addEventListener("click", buttonPressed);
+
+      const ytStringBtn = document.getElementById("oldest-btn");
+      const text = document.querySelectorAll("#oldest-btn #text")[0];
+      
+      text.removeAttribute("is-empty");
+      
+      if (!text) {
+        alert("RETURN SORT CRITICAL ERROR!");
+      }
       }, 1000)
+
     }
   };
 
