@@ -45,7 +45,7 @@ var stylesrestore = `
       if (!text) {
         console.log("text missing!");
       }
-      }, 1000)
+      }, 500)
 
     }
   };
@@ -59,6 +59,7 @@ var stylesrestore = `
 
   const buttonPressed = async () => {
     const latest = document.querySelectorAll("#chips")[1].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer iron-selected")[0];
+    latest.click();
     latest.removeAttribute("selected");
     oldestBtn.setAttribute("selected", "true");
     var styleSheet = document.createElement("style")
