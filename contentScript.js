@@ -1,6 +1,6 @@
 (() => {
 
-  let addbutton;
+  let addbutton, oldestBtn;
 
 
 var styles = `
@@ -22,13 +22,13 @@ var stylesrestore = `
 
   const videosLoaded = async () => {
     console.log("thisisworking");
-    const oldestBtnExists = document.getElementById("oldest-btn")
+    const oldestBtnExists = document.getElementById("oldest-btn");
     
         
     if (!oldestBtnExists) {
       setTimeout(function() {
       console.log("creating button");
-      const oldestBtn = document.createElement("yt-chip-cloud-chip-renderer");
+      oldestBtn = document.createElement("yt-chip-cloud-chip-renderer");
 
       oldestBtn.className = "style-scope " + "yt-chip-cloud-chip-renderer " + "oldest-btn";
       oldestBtn.setAttribute("chip-style", "STYLE_DEFAULT");
@@ -39,7 +39,6 @@ var stylesrestore = `
       oldestBtn.addEventListener("click", buttonPressed);
 
       const text = document.querySelectorAll("#oldest-btn #text")[0];
-      
       text.removeAttribute("is-empty");
       text.innerHTML = "Sort by: Oldest";
       
@@ -59,6 +58,9 @@ var stylesrestore = `
   };
 
   const buttonPressed = async () => {
+    const latest = document.querySelectorAll("#chips")[1].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer iron-selected")[0];
+    latest.removeAttribute("selected");
+    oldestBtn.setAttribute("selected", "true");
     var styleSheet = document.createElement("style")
     styleSheet.innerText = styles;
     document.head.appendChild(styleSheet)
