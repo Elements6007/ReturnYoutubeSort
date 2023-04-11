@@ -3,7 +3,7 @@
   let addbutton, oldestBtn, urlString;
 
 
-var styles = `
+  var styles = `
  #contents.ytd-rich-grid-renderer {
      flex-direction: column-reverse;
  }
@@ -12,7 +12,7 @@ var styles = `
      flex-direction: row-reverse;
  }`
 
-var stylesrestore = `
+  var stylesrestore = `
  #contents.ytd-rich-grid-renderer {
    flex-direction: column;
   
@@ -23,37 +23,61 @@ var stylesrestore = `
   const videosLoaded = async () => {
     console.log("thisisworking");
     const oldestBtnExists = document.getElementById("oldest-btn");
-    
-        
+
     if (!oldestBtnExists) {
-      setTimeout(function() {
-      console.log("creating button");
-      oldestBtn = document.createElement("yt-chip-cloud-chip-renderer");
+      setTimeout(function () {
+        console.log("creating button");
+        oldestBtn = document.createElement("yt-chip-cloud-chip-renderer");
 
-      oldestBtn.className = "style-scope " + "yt-chip-cloud-chip-renderer " + "oldest-btn";
-      oldestBtn.setAttribute("chip-style", "STYLE_DEFAULT");
-      oldestBtn.id = "oldest-btn";
-      addbutton = document.querySelectorAll("#chips")[1];
+        oldestBtn.className = "style-scope " + "yt-chip-cloud-chip-renderer " + "oldest-btn";
+        oldestBtn.setAttribute("chip-style", "STYLE_DEFAULT");
+        oldestBtn.id = "oldest-btn";
+        addbutton = document.querySelectorAll("#chips")[1];
 
-      if (addbutton) {
-        addbutton.appendChild(oldestBtn);
-      } else {
-        addbuttonReload = document.querySelectorAll("#chips")[0];
-        addbuttonReload.appendChild(oldestBtn);
-      }
-      oldestBtn.addEventListener("click", buttonPressed);
+        if (addbutton) {
+          addbutton.appendChild(oldestBtn);
+        } else {
+          addbuttonReload = document.querySelectorAll("#chips")[0];
+          addbuttonReload.appendChild(oldestBtn);
+        }
+        oldestBtn.addEventListener("click", buttonPressed);
 
-      const text = document.querySelectorAll("#oldest-btn #text")[0];
-      text.removeAttribute("is-empty");
-      text.innerHTML = "Sort by: Oldest";
-      
-      if (!text) {
-        console.log("text missing!");
-      }
+        const text = document.querySelectorAll("#oldest-btn #text")[0];
+        text.removeAttribute("is-empty");
+        text.innerHTML = "Sort by: Oldest";
+
+        if (!text) {
+          console.log("text missing!");
+        }
+        statusHandler();
       }, 500)
-
     }
   };
+
+  const statusHandler = async () => {
+    //watches for "Latest" or "Popular" buttons to be pressed to reinstate the oldest button
+
+    if (addbutton) {
+      console.log("[1][1]in use")
+      const latestHandler = document.querySelectorAll("#chips")[1].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[0];
+      latestHandler.addEventListener("click", waitHandler);
+      const popularHandler = document.querySelectorAll("#chips")[1].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[1];
+      popularHandler.addEventListener("click", waitHandler);
+    } else {
+      console.log("[0][0]in use")
+      latestHandler = document.querySelectorAll("#chips")[0].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[0];
+      latestHandler.addEventListener("click", waitHandler);
+      popularHandler = document.querySelectorAll("#chips")[0].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[1];
+      popularHandler.addEventListener("click", waitHandler);
+    }
+  };
+
+  const waitHandler = async () => {
+    console.log("timeout set")
+    setTimeout(function () {
+      videosLoaded();
+    }, 500)
+  }
 
   const scriptStop = async () => {
     console.log("script stop");
@@ -65,30 +89,32 @@ var stylesrestore = `
   const buttonPressed = async () => {
     const latest = document.querySelectorAll("#chips")[1].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer iron-selected")[0];
     latest.click();
-    latest.removeAttribute("selected");
-    oldestBtn.setAttribute("selected", "true");
-    var styleSheet = document.createElement("style")
-    styleSheet.innerText = styles;
-    document.head.appendChild(styleSheet)
+    setTimeout(function () {
+      latest.removeAttribute("selected");
+      oldestBtn.setAttribute("selected", "true");
+      var styleSheet = document.createElement("style")
+      styleSheet.innerText = styles;
+      document.head.appendChild(styleSheet)
+    }, 100)
   };
-  
-  const checkurl = async () => {
-      urlString = document.URL;
-      if (urlString.includes("videos") === true){
-        videosLoaded();
-        console.log("string includes videos")
-      } else {
-        scriptStop();
-      }
+
+  const checkUrl = async () => {
+    urlString = document.URL;
+    if (urlString.includes("videos") === true) {
+      videosLoaded();
+      console.log("string includes videos")
+    } else {
+      scriptStop();
+    }
   }
 
   chrome.runtime.onMessage.addListener((obj, sender, response) => {
-    const { type }= obj;
+    const { type } = obj;
 
     if (type === "NEW") {
       videosLoaded();
-    } 
+    }
 
   });
-checkurl();
+  checkUrl();
 })();
