@@ -1,6 +1,6 @@
 (() => {
 
-  let addbutton, oldestBtn;
+  let addbutton, oldestBtn, urlString;
 
 
 var styles = `
@@ -34,8 +34,13 @@ var stylesrestore = `
       oldestBtn.setAttribute("chip-style", "STYLE_DEFAULT");
       oldestBtn.id = "oldest-btn";
       addbutton = document.querySelectorAll("#chips")[1];
-      addbutton.appendChild(oldestBtn);
 
+      if (addbutton) {
+        addbutton.appendChild(oldestBtn);
+      } else {
+        addbuttonReload = document.querySelectorAll("#chips")[0];
+        addbuttonReload.appendChild(oldestBtn);
+      }
       oldestBtn.addEventListener("click", buttonPressed);
 
       const text = document.querySelectorAll("#oldest-btn #text")[0];
@@ -65,15 +70,24 @@ var stylesrestore = `
     styleSheet.innerText = styles;
     document.head.appendChild(styleSheet)
   };
+  
+  const checkurl = async () => {
+      urlString = document.URL;
+      if (urlString.includes("videos") === true){
+        videosLoaded();
+        console.log("string includes videos")
+      } else {
+        scriptStop();
+      }
+  }
 
   chrome.runtime.onMessage.addListener((obj, sender, response) => {
-    const { type, value, videoId } = obj;
+    const { type }= obj;
 
     if (type === "NEW") {
       videosLoaded();
-    } else {
-      scriptStop();
-    }
-  });
+    } 
 
+  });
+checkurl();
 })();
