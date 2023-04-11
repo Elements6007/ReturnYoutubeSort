@@ -1,6 +1,6 @@
 (() => {
 
-  let addbutton, oldestBtn, latest, popular;
+  let addbutton, oldestBtn;
 
 
 var styles = `
@@ -45,13 +45,6 @@ var stylesrestore = `
       if (!text) {
         console.log("text missing!");
       }
-      
-      latest = document.querySelectorAll("#chips")[1].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[0];
-      popular = document.querySelectorAll("#chips")[1].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[1];
-      
-      latest.addEventListener("click", changeState);
-      popular.addEventListener("click", changeState);
-      
       }, 1000)
 
     }
@@ -64,12 +57,8 @@ var stylesrestore = `
     document.head.appendChild(styleSheet)
   };
 
-  const changeState = async () => {
-    console.log("change state");
-    location.reload();
-  };
-
   const buttonPressed = async () => {
+    const latest = document.querySelectorAll("#chips")[1].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer iron-selected")[0];
     latest.removeAttribute("selected");
     oldestBtn.setAttribute("selected", "true");
     var styleSheet = document.createElement("style")
