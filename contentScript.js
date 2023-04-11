@@ -1,7 +1,8 @@
 (() => {
 
-  let addbutton, oldestBtn, urlString;
+  let addbutton, oldestBtn, urlString, selected;
 
+  selected = false;
 
   var styles = `
  #contents.ytd-rich-grid-renderer {
@@ -49,6 +50,10 @@
         if (!text) {
           console.log("text missing!");
         }
+
+        if (selected === true) {
+        oldestBtn.setAttribute("selected", "true");
+        }
         statusHandler();
       }, 500)
     }
@@ -87,15 +92,20 @@
   };
 
   const buttonPressed = async () => {
-    const latest = document.querySelectorAll("#chips")[1].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer iron-selected")[0];
+    if (addbutton) {
+    latest = document.querySelectorAll("#chips")[1].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[0];
+    } else {
+    latest = document.querySelectorAll("#chips")[0].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[0];
+    }
     latest.click();
     setTimeout(function () {
       latest.removeAttribute("selected");
-      oldestBtn.setAttribute("selected", "true");
       var styleSheet = document.createElement("style")
       styleSheet.innerText = styles;
       document.head.appendChild(styleSheet)
-    }, 100)
+      selected = true;
+      oldestBtn.setAttribute("selected", "true");
+    }, 500)
   };
 
   const checkUrl = async () => {
