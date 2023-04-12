@@ -138,6 +138,8 @@
 
     if (type === "NEW") {
       videosLoaded();
+    } else if (type === "no") {
+      scriptStop();
     }
 
   });
