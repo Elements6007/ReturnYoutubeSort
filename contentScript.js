@@ -1,6 +1,6 @@
 (() => {
 
-  let addbutton, oldestBtn, urlString, selected;
+  let addbutton, oldestBtn, urlString, selected, latestHandler, popularHandler;
 
   selected = false;
 
@@ -64,9 +64,9 @@
 
     if (addbutton) {
       console.log("[1][1]in use")
-      const latestHandler = document.querySelectorAll("#chips")[1].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[0];
+      latestHandler = document.querySelectorAll("#chips")[1].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[0];
       latestHandler.addEventListener("click", waitHandler);
-      const popularHandler = document.querySelectorAll("#chips")[1].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[1];
+      popularHandler = document.querySelectorAll("#chips")[1].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[1];
       popularHandler.addEventListener("click", waitHandler);
     } else {
       console.log("[0][0]in use")
@@ -91,6 +91,19 @@
     document.head.appendChild(styleSheet)
   };
 
+  const returnState = async (stateRequest) => {
+   if (stateRequest === "latest"){
+    console.log("state => latest")
+    location.reload();
+  } else {
+    location.reload();
+    setTimeout(function () {
+    popularHandler.click();
+    console.log("state => popular")
+    }, 500)
+  }
+  };
+
   const buttonPressed = async () => {
     if (addbutton) {
     latest = document.querySelectorAll("#chips")[1].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[0];
@@ -105,6 +118,8 @@
       document.head.appendChild(styleSheet)
       selected = true;
       oldestBtn.setAttribute("selected", "true");
+      latestHandler.addEventListener("click", returnState, "latest")
+      popularHandler.addEventListener("click", returnState, "popular")
     }, 500)
   };
 
