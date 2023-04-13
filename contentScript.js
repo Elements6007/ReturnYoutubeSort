@@ -1,9 +1,8 @@
 (() => {
 
-  let addbutton, oldestBtn, urlString, selected, latestHandler, popularHandler, url;
+  let addbutton, oldestBtn, urlString, selected, latestHandler, popularHandler;
 
   selected = false;
-  url = 0;
 
   var styles = `
  #contents.ytd-rich-grid-renderer {
