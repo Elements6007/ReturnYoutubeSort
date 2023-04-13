@@ -1,11 +1,11 @@
 {
     "name": "Sort By: Oldest",
     "version": "1.1.0",
-    "manifest_version": 3,
+    "manifest_version": 2,
     "permissions": ["tabs"],
     "host_permissions": ["https://*.youtube.com/*"],
     "background": {
-        "service_worker": "background.js"
+        "scripts": ["background.js"]
       },
     "description" : "Return YouTube Sort by Oldest",
     "content_scripts" : [
