@@ -1,8 +1,9 @@
 (() => {
 
-  let addbutton, oldestBtn, urlString, selected, latestHandler, popularHandler;
+  let addbutton, oldestBtn, urlString, selected, latestHandler, popularHandler, url;
 
   selected = false;
+  url = 0;
 
   var styles = `
  #contents.ytd-rich-grid-renderer {
@@ -122,11 +123,20 @@
       popularHandler.addEventListener("click", returnState, "popular")
     }, 500)
   };
+  
+  const urlRefresh = async () => {
+    if (urlString.includes("?")){
+       videosLoaded();
+    }
+    else {
+      window.location.hash = '?';
+    }
+  }
 
   const checkUrl = async () => {
     urlString = document.URL;
     if (urlString.includes("videos") === true) {
-      videosLoaded();
+      urlRefresh();
       console.log("string includes videos")
     } else {
       scriptStop();
@@ -137,7 +147,7 @@
     const { type } = obj;
 
     if (type === "NEW") {
-      videosLoaded();
+      checkUrl();
     } else if (type === "no") {
       scriptStop();
     }
