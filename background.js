@@ -5,8 +5,8 @@ chrome.tabs.onUpdated.addListener((tabId, tab) => {
       type: "NEW"
     });
   } else {
-    chrome.tabs.sendMessage( tabId, {
-      type: 'no'
-    })
+    chrome.tabs.sendMessage(tabId, {
+      type: "no"
+    });
   }
 });

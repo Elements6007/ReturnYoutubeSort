@@ -1,4 +1,4 @@
-[![stability-experimental](https://img.shields.io/badge/stability-experimental-orange.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#experimental)  ![version](https://img.shields.io/badge/version-1.0.0-blue) [![JavaScript](https://img.shields.io/badge/--F7DF1E?logo=javascript&logoColor=000)](https://www.javascript.com/)
+[![stability-experimental](https://img.shields.io/badge/stability-experimental-orange.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#experimental)  ![version](https://img.shields.io/badge/version-1.1.0-blue) [![JavaScript](https://img.shields.io/badge/--F7DF1E?logo=javascript&logoColor=000)](https://www.javascript.com/)
 # Return Youtube Sort By Oldest
  Return Youtube Sort By Oldest
  
@@ -9,7 +9,7 @@ https://user-images.githubusercontent.com/88860704/230260376-9384e536-cb85-45e6-
 
 
 ### Known current issues
-- Once selected Latest and Popular selectors will not work without a page refresh.
+- Currently only supports Chrome Browsers.
 - If channel has many videos loading time will be long.
 
 ### How it works
