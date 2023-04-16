@@ -13,6 +13,15 @@
         "matches": ["https://*.youtube.com/*"],
         "js" : ["contentScript.js"]
        }
-
-    ]
+    ],
+    "icons": {
+      "16": "assets/icon.png",
+      "24": "assets/icon.png",
+      "32": "assets/icon.png",
+      "48": "assets/icon.png",
+      "128": "assets/icon.png"
+    },
+    "action": {
+      "default_popup": "popup.html"
+    }
 }
