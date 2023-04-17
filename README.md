@@ -6,7 +6,7 @@
 
 
 https://user-images.githubusercontent.com/88860704/230260376-9384e536-cb85-45e6-9364-c26626bfd414.mp4
-
+## [Add to Firefox](https://addons.mozilla.org/addon/sort-by-oldest/)
 
 ### Known current issues
 - Currently only supports Chrome Browsers.
@@ -15,7 +15,7 @@ https://user-images.githubusercontent.com/88860704/230260376-9384e536-cb85-45e6-
 ### How it works
 Basically when `/videos` is found in the url it activates `contentScript.js`. It then creates the button on a 1s delay which allows the DOM to fully load. Once the button is pressed, it injects `styles` which is css that includes `flex-direction: column-reverse` and `flex-direction: row-reverse` which reverse the contents.
 
-### How to use
+### How manually install
 1. Download latest release .zip file
 2. Go to extension manager in browser and enable Developer mode
 3. Click `Load unpacked` and give the path to the extracted files.
