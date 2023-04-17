@@ -20,7 +20,7 @@ Basically when `/videos` is found in the url it activates `contentScript.js`. It
 2. Go to extension manager in browser and enable Developer mode
 3. Click `Load unpacked` and give the path to the extracted files.
 
-- Hopefully this extension will become available in the WebStore but its obviously not good enough to 'ship', therefore you must add it manually 
+- *Extension for Chrome waiting for approval* 
 
 ### HELP WANTED
 - reverse engineer api or use animations to cover loading time, if possible.
