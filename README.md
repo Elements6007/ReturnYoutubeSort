@@ -1,4 +1,6 @@
 [![stability-stable](https://img.shields.io/badge/stability-stable-green.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#experimental)  ![version](https://img.shields.io/badge/version-1.2.0-blue) [![JavaScript](https://img.shields.io/badge/--F7DF1E?logo=javascript&logoColor=000)](https://www.javascript.com/)
+
+[![Google Chrome](https://img.shields.io/badge/Google%20Chrome-4285F4?style=for-the-badge&logo=GoogleChrome&logoColor=white)](https://chrome.google.com/webstore/detail/sort-by-oldest/miglaibdlgminlepgeifekifakochlka) [![Firefox](https://img.shields.io/badge/Firefox-FF7139?style=for-the-badge&logo=Firefox-Browser&logoColor=white)](https://addons.mozilla.org/addon/sort-by-oldest/)
 # Return Youtube Sort By Oldest
  Return Youtube Sort By Oldest
  
@@ -6,10 +8,12 @@
 
 
 https://user-images.githubusercontent.com/88860704/230260376-9384e536-cb85-45e6-9364-c26626bfd414.mp4
-## [Add to Firefox](https://addons.mozilla.org/addon/sort-by-oldest/)
+
+# [Add to Chrome](https://chrome.google.com/webstore/detail/sort-by-oldest/miglaibdlgminlepgeifekifakochlka)  
+# [Add to Firefox](https://addons.mozilla.org/addon/sort-by-oldest/) 
 
 ### Known current issues
-- Currently only supports Chrome Browsers.
+- Microsoft Edge support pending
 - If channel has many videos loading time will be long.
 
 ### How it works
@@ -19,8 +23,6 @@ Basically when `/videos` is found in the url it activates `contentScript.js`. It
 1. Download latest release .zip file
 2. Go to extension manager in browser and enable Developer mode
 3. Click `Load unpacked` and give the path to the extracted files.
-
-- *Extension for Chrome waiting for approval* 
 
 ### HELP WANTED
 - reverse engineer api or use animations to cover loading time, if possible.
