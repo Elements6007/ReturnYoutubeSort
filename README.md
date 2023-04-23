@@ -26,7 +26,7 @@ Basically when `/videos` is found in the url it activates `contentScript.js`. It
 
 ### HELP WANTED
 - reverse engineer api or use animations to cover loading time, if possible.
-- i obviously dont know javascript
+- Website needs alot of work, help with that would be great :)
 
 ## Support the project!
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/elements6007)
