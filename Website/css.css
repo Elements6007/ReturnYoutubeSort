@@ -1,0 +1,75 @@
+* {
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+    background-color: rgb(14, 14, 14);
+}
+
+@media screen and (max-width: 768px) {
+.download {
+    top:90%;
+}
+
+*{
+    background-color: red;
+}
+}
+  
+
+/*.Sortby {
+    position: absolute;
+    width: 13%;
+    height: 4%;
+    border-radius: 8px;
+    background-color: #303030;
+    text-decoration: none;
+    font-size: 30px;
+    top: 30%;
+    left: 41%;
+    padding-top: 12px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: white;
+    text-align: center;
+}*/
+
+.returnsort {
+    position: absolute;
+    text-decoration: none;
+    font-size: 70px;
+    top: 40%;
+    left: 24%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    color: white;
+    text-align: center;
+}
+
+#github {
+    position: absolute;
+    top: 55%;
+    left: 35%;
+}
+
+.download {
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    width: 12%;
+    height: 4.7%;
+    font-size: 24px;
+    font-weight: 600;
+    top: 55.5%;
+    left: 50%;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    letter-spacing: 3px;
+}
+
+.text {
+    padding-top: 4%;
+}
+
+#downloadimg {
+    width: 20%;
+}
