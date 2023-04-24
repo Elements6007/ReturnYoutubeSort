@@ -30,4 +30,4 @@ Basically when `/videos` is found in the url it activates `contentScript.js`. It
 - Website needs alot of work, help with that would be great :)
 
 ## Support the project!
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/elements6007)
+[![BuyMeACoffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/elements6007)
