@@ -27,6 +27,8 @@
 ion-icon {
     color: #FFFFFF;
     font-size: 35px;
+    transition: all .1s ease-in;
+
 }
 
 .links {
@@ -72,6 +74,7 @@ ion-icon {
 .github {
     position: relative;
     display: flex;
+
 }
 
 .install {
@@ -84,8 +87,22 @@ ion-icon {
     padding-top: 5px;
     padding-left: 10px;
     color: white;
+    transition: all .3s ease-in;
 }
 
 a:link {
     text-decoration: none !important;
 }
+
+.text:hover {
+    color: red;
+}
+
+ion-icon:hover + .text {
+    color: red;
+}
+
+ion-icon:hover {
+    color: red;
+}
+
