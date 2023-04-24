@@ -2,19 +2,44 @@
     padding: 0%;
     margin: 0%;
     box-sizing: border-box;
-    background-color: rgb(14, 14, 14);
+    background-color: #000000;
 }
 
-@media screen and (max-width: 768px) {
-.download {
-    top:90%;
+@media screen and (max-width: 750px) {
+
+    .returnsort {
+        font-size: 15px;
+    }
+
+    .links {
+        left: 6%!important;
+        width: 10%!important;
+    }
+
+    .text {
+        padding-top: 5px;
+        padding-left: 10px;
+        color: white;
+    }
 }
 
-*{
-    background-color: red;
+
+ion-icon {
+    color: #FFFFFF;
+    font-size: 35px;
 }
+
+.links {
+    position: relative;
+    display: inline-flex;
+    padding-top: 1.5%;
+    left: 30%;
+    width: 18%;
+    letter-spacing: 4px;
+    font-size: 24px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
 }
-  
 
 /*.Sortby {
     position: absolute;
@@ -34,42 +59,33 @@
 }*/
 
 .returnsort {
-    position: absolute;
+    position: relative;
     text-decoration: none;
     font-size: 70px;
-    top: 40%;
-    left: 24%;
+    padding-top: 18%;
     font-family: 'Roboto', sans-serif;
     font-weight: 900;
     color: white;
     text-align: center;
 }
 
-#github {
-    position: absolute;
-    top: 55%;
-    left: 35%;
+.github {
+    position: relative;
+    display: flex;
 }
 
-.download {
-    position: absolute;
+.install {
+    position: relative;
     display: flex;
-    justify-content: flex-end;
-    width: 12%;
-    height: 4.7%;
-    font-size: 24px;
-    font-weight: 600;
-    top: 55.5%;
-    left: 50%;
-    font-family: 'Roboto', sans-serif;
-    color: white;
-    letter-spacing: 3px;
+    left: 100%;
 }
 
 .text {
-    padding-top: 4%;
+    padding-top: 5px;
+    padding-left: 10px;
+    color: white;
 }
 
-#downloadimg {
-    width: 20%;
+a:link {
+    text-decoration: none !important;
 }
