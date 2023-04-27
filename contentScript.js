@@ -9,16 +9,19 @@
      flex-direction: column-reverse;
  }
 
- #contents {
-     flex-direction: row-reverse;
+ #contents.ytd-rich-grid-row {
+  flex-direction: row-reverse;
+  justify-content: left;
+ }
  }`
 
   var stylesrestore = `
  #contents.ytd-rich-grid-renderer {
    flex-direction: column;
-  
- #contents {
-   flex-direction: row;
+ }
+   #contents {
+    flex-direction: row;
+  }
  }`
 
   const videosLoaded = async () => {
