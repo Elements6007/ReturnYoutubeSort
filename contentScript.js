@@ -1,6 +1,6 @@
 (() => {
 
-  let addbutton, oldestBtn, urlString, selected, latestHandler, popularHandler;
+  let addbutton, oldestBtn, urlString, selected, latestHandler, popularHandler, checkNum, numdiv;
 
   selected = false;
 
@@ -144,14 +144,14 @@
   }
    
   const loadAnimation = async () => {
-    var Interval = 500;
+    var Interval = 1000;
   
     const videosDiv = document.getElementById("contents");
     const primary = document.getElementById("primary");
     const renderer = document.getElementsByClassName("style-scope ytd-two-column-browse-results-renderer")[1];
 
     const videoNum = document.getElementById("videos-count").getElementsByClassName("style-scope yt-formatted-string")[0].innerHTML;
-    var numdiv = document.querySelectorAll("#content .style-scope ytd-rich-item-renderer").length;
+    numdiv = document.querySelectorAll("#content .style-scope ytd-rich-item-renderer").length;
     
     videosDiv.style.position = "relative";
     videosDiv.style.zIndex = "-1";
@@ -177,12 +177,15 @@
     numdiv = document.querySelectorAll("#content .style-scope ytd-rich-item-renderer").length;
     console.log("Loading...")
     ac.innerHTML = numdiv + "/" + videoNum;
-    if (videoNum == numdiv){
-      console.log(videoNum, numdiv);
-      videosDiv.style.zIndex = "0";
-      ac.style.display = "none";
-      clearInterval(refreshInterval);
+
+     if (checkNum == numdiv) {
+       console.log(videoNum, numdiv);
+       videosDiv.style.zIndex = "0";
+       ac.style.display = "none";
+       clearInterval(refreshInterval);
       }
+
+    checkNum = numdiv;
     }, Interval);
 
   }
