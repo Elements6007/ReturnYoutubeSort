@@ -1,6 +1,6 @@
 (() => {
 
-  let addbutton, oldestBtn, urlString, selected, latestHandler, popularHandler, checkNum, numdiv;
+  let addbutton, oldestBtn, urlString, selected, latestHandler, popularHandler, checkNum, numdiv, Astatus, colorTheme;
 
   selected = false;
 
@@ -142,51 +142,59 @@
       scriptStop();
     }
   }
-   
-  const loadAnimation = async () => {
-    var Interval = 1000;
   
-    const videosDiv = document.getElementById("contents");
-    const primary = document.getElementById("primary");
-    const renderer = document.getElementsByClassName("style-scope ytd-two-column-browse-results-renderer")[1];
+  const loadAnimation = async () => {
+    chrome.storage.local.get(["Asave"], (items) => {
+      Astatus = items.Asave;
+      console.log(Astatus);
+      if (items.Asave == "true") {
+        var Interval = 1000;
 
-    const videoNum = document.getElementById("videos-count").getElementsByClassName("style-scope yt-formatted-string")[0].innerHTML;
-    numdiv = document.querySelectorAll("#content .style-scope ytd-rich-item-renderer").length;
-    
-    videosDiv.style.position = "relative";
-    videosDiv.style.zIndex = "-1";
-    
-    renderer.style.position = "relative";
-    document.body.style.overflowX = "hidden";
-    ac = document.createElement('div');
-    ac.id = "ac";
-    ac.style.position = "absolute";
-    ac.style.top = "600px";
-    ac.style.height = "900px";
-    ac.style.width = "70%";
-    ac.style.backgroundColor = "#0f0f0f";
-    ac.style.color = "#FFFFFF";
-    ac.style.fontSize = "large";
-    ac.innerHTML = "0/" + videoNum;
-    ac.style.padding = "top: 5%"
-    ac.style.zIndex = "10";
-    ac.style.textAlign = "center"
-    primary.append(ac);
+        const videosDiv = document.getElementById("contents");
+        const primary = document.getElementById("primary");
+        const renderer = document.getElementsByClassName("style-scope ytd-two-column-browse-results-renderer")[1];
 
-    var refreshInterval = setInterval(function() {
-    numdiv = document.querySelectorAll("#content .style-scope ytd-rich-item-renderer").length;
-    console.log("Loading...")
-    ac.innerHTML = numdiv + "/" + videoNum;
+        const videoNum = document.getElementById("videos-count").getElementsByClassName("style-scope yt-formatted-string")[0].innerHTML;
+        numdiv = document.querySelectorAll("#content .style-scope ytd-rich-item-renderer").length;
 
-     if (checkNum == numdiv) {
-       console.log(videoNum, numdiv);
-       videosDiv.style.zIndex = "0";
-       ac.style.display = "none";
-       clearInterval(refreshInterval);
+        videosDiv.style.position = "relative";
+        videosDiv.style.zIndex = "-1";
+
+        renderer.style.position = "relative";
+        document.body.style.overflowX = "hidden";
+        ac = document.createElement('div');
+        ac.id = "ac";
+        ac.style.position = "absolute";
+        ac.style.top = "600px";
+        ac.style.height = "900px";
+        ac.style.width = "70%";
+        ac.style.backgroundColor = "#0f0f0f";
+        ac.style.color = "#FFFFFF";
+        ac.style.fontSize = "large";
+        ac.innerHTML = "0/" + videoNum;
+        ac.style.padding = "top: 5%"
+        ac.style.zIndex = "10";
+        ac.style.textAlign = "center"
+        primary.append(ac);
+
+        var refreshInterval = setInterval(function () {
+          numdiv = document.querySelectorAll("#content .style-scope ytd-rich-item-renderer").length;
+          console.log("Loading...")
+          ac.innerHTML = numdiv + "/" + videoNum;
+
+          if (checkNum == numdiv) {
+            console.log(videoNum, numdiv);
+            videosDiv.style.zIndex = "0";
+            ac.style.display = "none";
+            clearInterval(refreshInterval);
+          }
+
+          checkNum = numdiv;
+        }, Interval);
+      } else if (items.Asave === undefined) {
+        chrome.storage.local.set({ "Asave": "true", "Csave": "dark" }); //init and set default animation and appearance if undefined.
       }
-
-    checkNum = numdiv;
-    }, Interval);
+    });
 
   }
 

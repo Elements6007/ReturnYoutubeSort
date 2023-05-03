@@ -6,10 +6,30 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 <div class="container">
     <!--<div class="Sortby">Sort by: Oldest</div>-->
-
+    <a href = "#">
+    <img id="settings" src="assets/settings-outline.svg"/>
+    </a>
+    <div class="div-wrapper" style="display: block;">
     <div class="returnsort">Return YouTube Sort by Oldest</div>
     <a class="github" href="https://github.com/Elements6007/ReturnYoutubeSort/" target="_blank">GitHub</a>
     <div class="version">v1.2.0</div>
+    </div>
+    <div class="div-settings" style="display: none;">
+        <div class="set-animation">animation:
+            <select id="animationstat">
+                <option value="true">Enabled</option>
+                <option value="false">Disabled</option>
+            </select>
+        </div>
+        <div class="set-color">appearance:
+            <select id="colorstat">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+            </select>
+        </div>
+        <div id="dump">where am i </div>
+        <div id="dump2">where am i </div>
+    </div>
 
 </div>
-</div>
+<script src="popup.js"></script>
