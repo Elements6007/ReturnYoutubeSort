@@ -2,12 +2,9 @@
 
 [![Google Chrome](https://img.shields.io/badge/Google%20Chrome-4285F4?style=for-the-badge&logo=GoogleChrome&logoColor=white)](https://chrome.google.com/webstore/detail/sort-by-oldest/miglaibdlgminlepgeifekifakochlka) [![Firefox](https://img.shields.io/badge/Firefox-FF7139?style=for-the-badge&logo=Firefox-Browser&logoColor=white)](https://addons.mozilla.org/addon/sort-by-oldest/) 	[![Edge](https://img.shields.io/badge/Edge-0078D7?style=for-the-badge&logo=Microsoft-edge&logoColor=white)](https://microsoftedge.microsoft.com/addons/detail/sort-by-oldest/goommoejopdlpinofbhmkahjdciaepbi)
 # Return Youtube Sort By Oldest
- Return Youtube Sort By Oldest
+ This browser extension returns the Youtube Sort By: Oldest feature. It basically inverts the videos with a animation overlay(which can be disabled in settings).
  
- 
-
-
-https://user-images.githubusercontent.com/88860704/230260376-9384e536-cb85-45e6-9364-c26626bfd414.mp4
+https://user-images.githubusercontent.com/88860704/235992554-7e5f1537-e5d0-41a9-a993-f6db8482434f.mp4
 
 # [Add to Chrome](https://chrome.google.com/webstore/detail/sort-by-oldest/miglaibdlgminlepgeifekifakochlka)  
 # [Add to Firefox](https://addons.mozilla.org/addon/sort-by-oldest/) 
