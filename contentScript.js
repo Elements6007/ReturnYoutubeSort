@@ -58,7 +58,7 @@
       }, 500)
     }
 
-    chrome.storage.local.get(["Asave"], (items) => {
+    chrome.storage.local.get(["Asave"], (items) => { // init storage to prevent undefined values when first installing. needs work.
       if (items.Asave != ("true" || "false")){
         console.log("setting undefined variables")
           chrome.storage.local.set({ "Asave": "true", "Csave": "dark" }); //init and set default animation and appearance if undefined.
