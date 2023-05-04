@@ -63,3 +63,28 @@ body {
     left: 42%;
     top: 63%;
 }
+
+#settings {
+    position:absolute; 
+    left:88%; 
+    top: 88%; 
+    width: 30px;
+    transition: 0.3s ease-in-out;
+}
+
+#settings:hover {
+    transform: rotate(-1rad);
+}
+
+.div-settings{
+    position: absolute;
+    font-weight: 400;
+    top: 10%;
+    left: 22%;
+    font-size: 15px;
+    color: white;
+}
+
+.set-color {
+    padding-top: 10px;
+}

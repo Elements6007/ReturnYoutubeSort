@@ -1,6 +1,6 @@
 (() => {
 
-  let addbutton, oldestBtn, urlString, selected, latestHandler, popularHandler;
+  let addbutton, oldestBtn, urlString, selected, latestHandler, popularHandler, checkNum, numdiv, Astatus, colorTheme, colorText;
 
   selected = false;
 
@@ -108,6 +108,7 @@
   };
 
   const buttonPressed = async () => {
+    loadAnimation();
     if (addbutton) {
     latest = document.querySelectorAll("#chips")[1].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[0];
     } else {
@@ -143,6 +144,75 @@
     } else {
       scriptStop();
     }
+  }
+  
+  const loadAnimation = async () => {
+    chrome.storage.local.get(["Asave"], (items) => {
+      Astatus = items.Asave;
+      console.log(Astatus);
+      if (items.Asave == "true") { //if animation enabled
+        const videosDiv = document.getElementById("contents");
+        const primary = document.getElementById("primary");
+        const renderer = document.getElementsByClassName("style-scope ytd-two-column-browse-results-renderer")[1];
+       
+        const videoNum = document.getElementById("videos-count").getElementsByClassName("style-scope yt-formatted-string")[0].innerHTML;
+        numdiv = document.querySelectorAll("#content .style-scope ytd-rich-item-renderer").length;
+
+        videosDiv.style.position = "relative";
+        videosDiv.style.zIndex = "-1";
+
+        renderer.style.position = "relative";
+        document.body.style.overflowX = "hidden";
+        ac = document.createElement('div');
+        ac.id = "ac";
+        ac.style.position = "absolute";
+        ac.style.top = "600px";
+        ac.style.height = "900px";
+        ac.style.width = "70%";
+        ac.style.backgroundColor = colorTheme;
+        ac.style.color = colorText;
+        ac.style.fontSize = "large";
+        ac.innerHTML = "0/" + videoNum;
+        ac.style.padding = "top: 5%"
+        ac.style.zIndex = "10";
+        ac.style.textAlign = "center"
+        primary.append(ac);
+
+        var refreshInterval = setInterval(function () {
+          numdiv = document.querySelectorAll("#content .style-scope ytd-rich-item-renderer").length;
+          console.log("Loading...")
+          ac.innerHTML = numdiv + "/" + videoNum;
+
+          if (checkNum == numdiv) {
+            console.log(videoNum, numdiv);
+            videosDiv.style.zIndex = "0";
+            ac.style.display = "none";
+            clearInterval(refreshInterval);
+          }
+
+          checkNum = numdiv;
+        }, 1000);
+      }
+    });
+
+  }
+
+  chrome.storage.local.get(["Asave"], (items) => { // init storage to prevent undefined values when first installing. needs work.
+    Astatus = items.Asave;
+    if (Astatus == 0){
+        chrome.storage.local.set({ "Asave": "true", "Csave": "default" }); //init and set default animation and appearance if undefined.
+    } else {
+      console.log(Astatus)
+    }
+    
+  });
+
+  if (document.documentElement.getAttribute("dark") == '') { 
+    colorTheme = "#0f0f0f"; // dark mode
+    colorText = "#FFFFFF"
+  } else if (document.documentElement.getAttribute("dark") == null)  {
+    colorTheme = "#FFFFFF"; // light mode
+    colorText = "0f0f0f"
   }
 
   chrome.runtime.onMessage.addListener((obj, sender, response) => {
