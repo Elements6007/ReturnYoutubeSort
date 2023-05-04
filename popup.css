@@ -4,8 +4,9 @@ body {
 
 .container {
     width: 280px;
-    background: rgb(122,55,55);
-    background: linear-gradient(0deg, rgba(122,55,55,1) 0%, rgba(0,0,0,1) 90%, rgba(0,0,0,1) 100%);
+    /*background: rgb(122,55,55);
+    background: linear-gradient(0deg, rgba(122,55,55,1) 0%, rgba(0,0,0,1) 90%, rgba(0,0,0,1) 100%);*/
+    background-color: #0f0f0f;
     height: 300px;
 }
 
