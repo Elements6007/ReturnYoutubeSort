@@ -25,13 +25,9 @@ chrome.storage.local.get(["Asave", "Csave"], (items) => {
 
 
 function getValues() {
-    const dump = document.getElementById("dump");
-    const dump2 = document.getElementById("dump2");
     Astat = animationdiv.value;
     Cstat = colordiv.value;
-    chrome.storage.local.set({"Asave": Astat, "Csave": Cstat})
-    dump.innerHTML = Astat;
-    dump2.innerHTML = Cstat;
+    chrome.storage.local.set({"Asave": Astat, "Csave": Cstat})  
 };
 
 animationdiv.onchange = getValues;
