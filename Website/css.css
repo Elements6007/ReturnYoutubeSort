@@ -1,0 +1,108 @@
+* {
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+    background-color: #000000;
+}
+
+@media screen and (max-width: 750px) {
+
+    .returnsort {
+        font-size: 15px;
+    }
+
+    .links {
+        left: 6%!important;
+        width: 10%!important;
+    }
+
+    .text {
+        padding-top: 5px;
+        padding-left: 10px;
+        color: white;
+    }
+}
+
+
+ion-icon {
+    color: #FFFFFF;
+    font-size: 35px;
+    transition: all .1s ease-in;
+
+}
+
+.links {
+    position: relative;
+    display: inline-flex;
+    padding-top: 1.5%;
+    left: 30%;
+    width: 18%;
+    letter-spacing: 4px;
+    font-size: 24px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+}
+
+/*.Sortby {
+    position: absolute;
+    width: 13%;
+    height: 4%;
+    border-radius: 8px;
+    background-color: #303030;
+    text-decoration: none;
+    font-size: 30px;
+    top: 30%;
+    left: 41%;
+    padding-top: 12px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: white;
+    text-align: center;
+}*/
+
+.returnsort {
+    position: relative;
+    text-decoration: none;
+    font-size: 70px;
+    padding-top: 18%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    color: white;
+    text-align: center;
+}
+
+.github {
+    position: relative;
+    display: flex;
+
+}
+
+.install {
+    position: relative;
+    display: flex;
+    left: 100%;
+}
+
+.text {
+    padding-top: 5px;
+    padding-left: 10px;
+    color: white;
+    transition: all .3s ease-in;
+}
+
+a:link {
+    text-decoration: none !important;
+}
+
+.text:hover {
+    color: red;
+}
+
+ion-icon:hover + .text {
+    color: red;
+}
+
+ion-icon:hover {
+    color: red;
+}
+
