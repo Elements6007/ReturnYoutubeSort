@@ -1,4 +1,4 @@
-[![stability-stable](https://img.shields.io/badge/stability-stable-green.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#experimental) ![version](https://img.shields.io/badge/version-1.2.1-blue) 
+[![stability-stable](https://img.shields.io/badge/stability-stable-green.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#experimental) ![version](https://img.shields.io/badge/version-1.3.0-blue) 
 [![Chrome Web Store Users](https://img.shields.io/chrome-web-store/users/miglaibdlgminlepgeifekifakochlka?label=Chrome%20Users&style=flat&logo=google)](https://chrome.google.com/webstore/detail/sort-by-oldest/miglaibdlgminlepgeifekifakochlka) 
 [![Mozilla downloads](https://img.shields.io/amo/users/sort-by-oldest?label=Firefox%20Users&style=flat&logo=firefox)](https://addons.mozilla.org/en-US/firefox/addon/sort-by-oldest)
 [![JavaScript](https://img.shields.io/badge/--F7DF1E?logo=javascript&logoColor=000)](https://www.javascript.com/)
