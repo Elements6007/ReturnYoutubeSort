@@ -1,6 +1,6 @@
 (() => {
 
-  let addbutton, oldestBtn, urlString, selected, latestHandler, popularHandler, checkNum, numdiv, Astatus, colorTheme, colorText;
+  let addbutton, oldestBtn, urlString, selected, latestHandler, popularHandler, checkNum, numdiv, Astatus, colorTheme, colorText, location;
 
   selected = false;
 
@@ -138,9 +138,18 @@
 
   const checkUrl = async () => {
     urlString = document.URL;
-    if (urlString.includes("videos") === true) {
+    if ((urlString.includes("videos") || urlString.includes("shorts") || urlString.includes("streams")) == true) {
       urlRefresh();
-      console.log("string includes videos")
+      console.log("string includes videos or shorts")
+      if (urlString.includes("videos")) {
+        location = "videos";
+      } else if (urlString.includes("shorts")) {
+        location = "shorts";
+      } else if (urlString.includes("streams")){
+        location = "live";
+      } else {
+        errorHandler("urlString.includes nothing", "checkUrl()");
+      }
     } else {
       scriptStop();
     }
@@ -150,7 +159,7 @@
     chrome.storage.local.get(["Asave"], (items) => {
       Astatus = items.Asave;
       console.log(Astatus);
-      if (items.Asave == "true") { //if animation enabled
+      if (items.Asave == "true" && location == "videos") { //if animation enabled
         const videosDiv = document.getElementById("contents");
         const primary = document.getElementById("primary");
         const renderer = document.getElementsByClassName("style-scope ytd-two-column-browse-results-renderer")[1];
@@ -213,6 +222,10 @@
   } else if (document.documentElement.getAttribute("dark") == null)  {
     colorTheme = "#FFFFFF"; // light mode
     colorText = "0f0f0f"
+  }
+
+  function errorHandler(error, failLocation) {
+    console.log(error, failLocation);
   }
 
   chrome.runtime.onMessage.addListener((obj, sender, response) => {
