@@ -127,11 +127,12 @@
     }, 500)
   };
   
-  const urlRefresh = async () => {
-    if (urlString.includes("?")){
-       videosLoaded();
-    }
-    else {
+  const urlRefresh = async (url) => {
+    if (url.includes("?")){
+      videosLoaded();
+    } else if (url.includes("shorts") && !url.includes("@")){
+      // this does nothing so that when watching a shorts video you can go back. Basically prevents it from hashing.
+    } else {
       window.location.hash = '?';
     }
   }
@@ -139,13 +140,13 @@
   const checkUrl = async () => {
     urlString = document.URL;
     if ((urlString.includes("videos") || urlString.includes("shorts") || urlString.includes("streams")) == true) {
-      urlRefresh();
+      urlRefresh(urlString);
       console.log("string includes videos or shorts")
       if (urlString.includes("videos")) {
         location = "videos";
       } else if (urlString.includes("shorts")) {
         location = "shorts";
-      } else if (urlString.includes("streams")){
+      } else if (urlString.includes("streams")) {
         location = "live";
       } else {
         errorHandler("urlString.includes nothing", "checkUrl()");
