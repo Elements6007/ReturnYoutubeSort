@@ -36,14 +36,9 @@
         oldestBtn.className = "style-scope " + "yt-chip-cloud-chip-renderer " + "oldest-btn";
         oldestBtn.setAttribute("chip-style", "STYLE_DEFAULT");
         oldestBtn.id = "oldest-btn";
-        addbutton = document.querySelectorAll("#chips")[1];
+        addbutton = document.querySelectorAll("#chips")[0];
+        addbutton.appendChild(oldestBtn);
 
-        if (addbutton) {
-          addbutton.appendChild(oldestBtn);
-        } else {
-          addbuttonReload = document.querySelectorAll("#chips")[0];
-          addbuttonReload.appendChild(oldestBtn);
-        }
         oldestBtn.addEventListener("click", buttonPressed);
 
         const text = document.querySelectorAll("#oldest-btn #text")[0];
