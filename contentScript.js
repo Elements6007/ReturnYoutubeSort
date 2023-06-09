@@ -64,20 +64,10 @@
 
   const statusHandler = async () => {
     //watches for "Latest" or "Popular" buttons to be pressed to reinstate the oldest button
-
-    if (addbutton) {
-      console.log("[1][1]in use")
-      latestHandler = document.querySelectorAll("#chips")[1].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[0];
-      latestHandler.addEventListener("click", waitHandler);
-      popularHandler = document.querySelectorAll("#chips")[1].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[1];
-      popularHandler.addEventListener("click", waitHandler);
-    } else {
-      console.log("[0][0]in use")
       latestHandler = document.querySelectorAll("#chips")[0].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[0];
       latestHandler.addEventListener("click", waitHandler);
       popularHandler = document.querySelectorAll("#chips")[0].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[1];
       popularHandler.addEventListener("click", waitHandler);
-    }
   };
 
   const waitHandler = async () => {
@@ -109,11 +99,7 @@
 
   const buttonPressed = async () => {
     loadAnimation();
-    if (addbutton) {
-    latest = document.querySelectorAll("#chips")[1].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[0];
-    } else {
     latest = document.querySelectorAll("#chips")[0].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[0];
-    }
     latest.click();
     setTimeout(function () {
       latest.removeAttribute("selected");
