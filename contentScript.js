@@ -34,14 +34,9 @@
         oldestBtn.className = "style-scope " + "yt-chip-cloud-chip-renderer " + "oldest-btn";
         oldestBtn.setAttribute("chip-style", "STYLE_DEFAULT");
         oldestBtn.id = "oldest-btn";
-        addbutton = document.querySelectorAll("#chips")[1];
+        addbutton = document.querySelectorAll("#chips")[0];
+        addbutton.appendChild(oldestBtn);
 
-        if (addbutton) {
-          addbutton.appendChild(oldestBtn);
-        } else {
-          addbuttonReload = document.querySelectorAll("#chips")[0];
-          addbuttonReload.appendChild(oldestBtn);
-        }
         oldestBtn.addEventListener("click", buttonPressed);
 
         const text = document.querySelectorAll("#oldest-btn #text")[0];
@@ -55,47 +50,35 @@
         if (selected === true) {
         oldestBtn.setAttribute("selected", "true");
         }
-        statusHandler();
-      }, 500)
-    }
-  };
 
-  const statusHandler = async () => {
-    //watches for "Latest" or "Popular" buttons to be pressed to reinstate the oldest button
+        //watches for "Latest" or "Popular" buttons to be pressed to reinstate the oldest button
+        latestHandler = document.querySelectorAll("#chips")[0].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[0];
+        latestHandler.addEventListener("click", waitHandler);
+        popularHandler = document.querySelectorAll("#chips")[0].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[1];
+        popularHandler.addEventListener("click", waitHandler);
 
-    if (addbutton) {
-      //console.log("[1][1]in use")
-      latestHandler = document.querySelectorAll("#chips")[1].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[0];
-      latestHandler.addEventListener("click", waitHandler);
-      popularHandler = document.querySelectorAll("#chips")[1].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[1];
-      popularHandler.addEventListener("click", waitHandler);
-    } else {
-      //console.log("[0][0]in use")
-      latestHandler = document.querySelectorAll("#chips")[0].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[0];
-      latestHandler.addEventListener("click", waitHandler);
-      popularHandler = document.querySelectorAll("#chips")[0].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[1];
-      popularHandler.addEventListener("click", waitHandler);
+      }, 500);
     }
   };
 
   const waitHandler = async () => {
     setTimeout(function () {
       videosLoaded();
-    }, 500)
+    }, 500);
   }
 
   const scriptStop = async () => {
     var styleSheet = document.createElement("style")
-    styleSheet.innerText = stylesrestore
-    document.head.appendChild(styleSheet)
+    styleSheet.innerText = stylesrestore;
+    document.head.appendChild(styleSheet);
   };
 
   const returnState = async (stateRequest) => {
    if (stateRequest === "latest"){
-    //console.log("state => latest")
-    location.reload();
+    //console.log("state => latest");
+    window.location.reload();
   } else {
-    location.reload();
+    window.location.reload();
     setTimeout(function () {
     popularHandler.click();
     //console.log("state => popular")
@@ -105,22 +88,18 @@
 
   const buttonPressed = async () => {
     loadAnimation();
-    if (addbutton) {
-    latest = document.querySelectorAll("#chips")[1].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[0];
-    } else {
     latest = document.querySelectorAll("#chips")[0].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[0];
-    }
     latest.click();
     setTimeout(function () {
       latest.removeAttribute("selected");
-      var styleSheet = document.createElement("style")
+      var styleSheet = document.createElement("style");
       styleSheet.innerText = styles;
-      document.head.appendChild(styleSheet)
+      document.head.appendChild(styleSheet);
       selected = true;
       oldestBtn.setAttribute("selected", "true");
-      latestHandler.addEventListener("click", returnState, "latest")
-      popularHandler.addEventListener("click", returnState, "popular")
-    }, 500)
+      latestHandler.addEventListener("click", returnState, "latest");
+      popularHandler.addEventListener("click", returnState, "popular");
+    }, 500);
   };
   
   const urlRefresh = async (url) => {
@@ -208,7 +187,7 @@
     if (Astatus == 0){
         chrome.storage.local.set({ "Asave": "true", "Csave": "default" }); //init and set default animation and appearance if undefined.
     } else {
-      console.log(Astatus)
+      console.log(Astatus);
     }
     
   });
