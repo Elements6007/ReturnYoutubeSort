@@ -52,17 +52,15 @@
         if (selected === true) {
         oldestBtn.setAttribute("selected", "true");
         }
-        statusHandler();
+
+        //watches for "Latest" or "Popular" buttons to be pressed to reinstate the oldest button
+        latestHandler = document.querySelectorAll("#chips")[0].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[0];
+        latestHandler.addEventListener("click", waitHandler);
+        popularHandler = document.querySelectorAll("#chips")[0].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[1];
+        popularHandler.addEventListener("click", waitHandler);
+
       }, 500)
     }
-  };
-
-  const statusHandler = async () => {
-    //watches for "Latest" or "Popular" buttons to be pressed to reinstate the oldest button
-      latestHandler = document.querySelectorAll("#chips")[0].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[0];
-      latestHandler.addEventListener("click", waitHandler);
-      popularHandler = document.querySelectorAll("#chips")[0].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[1];
-      popularHandler.addEventListener("click", waitHandler);
   };
 
   const waitHandler = async () => {
@@ -82,9 +80,9 @@
   const returnState = async (stateRequest) => {
    if (stateRequest === "latest"){
     console.log("state => latest")
-    location.reload();
+    window.location.reload();
   } else {
-    location.reload();
+    window.location.reload();
     setTimeout(function () {
     popularHandler.click();
     console.log("state => popular")
