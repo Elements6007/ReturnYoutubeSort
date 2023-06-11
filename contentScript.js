@@ -59,7 +59,7 @@
         popularHandler = document.querySelectorAll("#chips")[0].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[1];
         popularHandler.addEventListener("click", waitHandler);
 
-      }, 500)
+      }, 500);
     }
   };
 
@@ -67,25 +67,25 @@
     console.log("timeout set")
     setTimeout(function () {
       videosLoaded();
-    }, 500)
+    }, 500);
   }
 
   const scriptStop = async () => {
     console.log("script stop");
-    var styleSheet = document.createElement("style")
-    styleSheet.innerText = stylesrestore
-    document.head.appendChild(styleSheet)
+    var styleSheet = document.createElement("style");
+    styleSheet.innerText = stylesrestore;
+    document.head.appendChild(styleSheet);
   };
 
   const returnState = async (stateRequest) => {
    if (stateRequest === "latest"){
-    console.log("state => latest")
+    console.log("state => latest");
     window.location.reload();
   } else {
     window.location.reload();
     setTimeout(function () {
     popularHandler.click();
-    console.log("state => popular")
+    console.log("state => popular");
     }, 500)
   }
   };
@@ -96,14 +96,14 @@
     latest.click();
     setTimeout(function () {
       latest.removeAttribute("selected");
-      var styleSheet = document.createElement("style")
+      var styleSheet = document.createElement("style");
       styleSheet.innerText = styles;
-      document.head.appendChild(styleSheet)
+      document.head.appendChild(styleSheet);
       selected = true;
       oldestBtn.setAttribute("selected", "true");
-      latestHandler.addEventListener("click", returnState, "latest")
-      popularHandler.addEventListener("click", returnState, "popular")
-    }, 500)
+      latestHandler.addEventListener("click", returnState, "latest");
+      popularHandler.addEventListener("click", returnState, "popular");
+    }, 500);
   };
   
   const urlRefresh = async (url) => {
@@ -120,7 +120,7 @@
     urlString = document.URL;
     if ((urlString.includes("videos") || urlString.includes("shorts") || urlString.includes("streams")) == true) {
       urlRefresh(urlString);
-      console.log("string includes videos or shorts")
+      console.log("string includes videos or shorts");
       if (urlString.includes("videos")) {
         location = "videos";
       } else if (urlString.includes("shorts")) {
@@ -191,7 +191,7 @@
     if (Astatus == 0){
         chrome.storage.local.set({ "Asave": "true", "Csave": "default" }); //init and set default animation and appearance if undefined.
     } else {
-      console.log(Astatus)
+      console.log(Astatus);
     }
     
   });
