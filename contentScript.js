@@ -158,9 +158,9 @@
         ac.style.color = colorText;
         ac.style.fontSize = "large";
         ac.innerHTML = "0/" + videoNum;
-        ac.style.padding = "top: 5%"
+        ac.style.padding = "top: 5%";
         ac.style.zIndex = "10";
-        ac.style.textAlign = "center"
+        ac.style.textAlign = "center";
         primary.append(ac);
 
         var refreshInterval = setInterval(function () {
@@ -194,10 +194,10 @@
 
   if (document.documentElement.getAttribute("dark") == '') {
     colorTheme = "#0f0f0f"; // dark mode
-    colorText = "#FFFFFF"
+    colorText = "#FFFFFF";
   } else if (document.documentElement.getAttribute("dark") == null) {
     colorTheme = "#FFFFFF"; // light mode
-    colorText = "0f0f0f"
+    colorText = "0f0f0f";
   }
 
   function errorHandler(error, failLocation) {
