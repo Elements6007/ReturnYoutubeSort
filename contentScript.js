@@ -48,7 +48,7 @@
         }
 
         if (selected === true) {
-        oldestBtn.setAttribute("selected", "true");
+          oldestBtn.setAttribute("selected", "true");
         }
 
         //watches for "Latest" or "Popular" buttons to be pressed to reinstate the oldest button
@@ -74,16 +74,16 @@
   };
 
   const returnState = async (stateRequest) => {
-   if (stateRequest === "latest"){
-    //console.log("state => latest");
-    window.location.reload();
-  } else {
-    window.location.reload();
-    setTimeout(function () {
-    popularHandler.click();
-    //console.log("state => popular")
-    }, 500)
-  }
+    if (stateRequest === "latest") {
+      //console.log("state => latest");
+      window.location.reload();
+    } else {
+      window.location.reload();
+      setTimeout(function () {
+        popularHandler.click();
+        //console.log("state => popular")
+      }, 500)
+    }
   };
 
   const buttonPressed = async () => {
@@ -101,11 +101,11 @@
       popularHandler.addEventListener("click", returnState, "popular");
     }, 500);
   };
-  
+
   const urlRefresh = async (url) => {
-    if (url.includes("?")){
+    if (url.includes("?")) {
       videosLoaded();
-    } else if (url.includes("shorts") && !url.includes("@")){
+    } else if (url.includes("shorts") && !url.includes("@")) {
       // this does nothing so that when watching a shorts video you can go back. Basically prevents it from hashing.
     } else {
       window.location.hash = '?';
@@ -130,7 +130,7 @@
       scriptStop();
     }
   }
-  
+
   const loadAnimation = async () => {
     chrome.storage.local.get(["Asave"], (items) => {
       Astatus = items.Asave;
@@ -139,7 +139,7 @@
         const videosDiv = document.getElementById("contents");
         const primary = document.getElementById("primary");
         const renderer = document.getElementsByClassName("style-scope ytd-two-column-browse-results-renderer")[1];
-       
+
         const videoNum = document.getElementById("videos-count").getElementsByClassName("style-scope yt-formatted-string")[0].innerHTML;
         numdiv = document.querySelectorAll("#content .style-scope ytd-rich-item-renderer").length;
 
@@ -184,18 +184,18 @@
 
   chrome.storage.local.get(["Asave"], (items) => { // init storage to prevent undefined values when first installing. needs work.
     Astatus = items.Asave;
-    if (Astatus == 0){
-        chrome.storage.local.set({ "Asave": "true", "Csave": "default" }); //init and set default animation and appearance if undefined.
+    if (Astatus == 0) {
+      chrome.storage.local.set({ "Asave": "true", "Csave": "default" }); //init and set default animation and appearance if undefined.
     } else {
       console.log(Astatus);
     }
-    
+
   });
 
-  if (document.documentElement.getAttribute("dark") == '') { 
+  if (document.documentElement.getAttribute("dark") == '') {
     colorTheme = "#0f0f0f"; // dark mode
     colorText = "#FFFFFF"
-  } else if (document.documentElement.getAttribute("dark") == null)  {
+  } else if (document.documentElement.getAttribute("dark") == null) {
     colorTheme = "#FFFFFF"; // light mode
     colorText = "0f0f0f"
   }
