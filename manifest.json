@@ -1,6 +1,6 @@
 {
     "name": "Sort By: Oldest",
-    "version": "1.4.0",
+    "version": "1.4.1",
     "manifest_version": 3,
     "host_permissions": ["https://*.youtube.com/*"],
     "permissions": ["storage"],

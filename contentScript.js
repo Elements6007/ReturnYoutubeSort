@@ -25,12 +25,10 @@
  }`
 
   const videosLoaded = async () => {
-    console.log("thisisworking");
     const oldestBtnExists = document.getElementById("oldest-btn");
 
     if (!oldestBtnExists) {
       setTimeout(function () {
-        console.log("creating button");
         oldestBtn = document.createElement("yt-chip-cloud-chip-renderer");
 
         oldestBtn.className = "style-scope " + "yt-chip-cloud-chip-renderer " + "oldest-btn";
@@ -46,7 +44,7 @@
         text.innerHTML = "Sort by: Oldest";
 
         if (!text) {
-          console.log("text missing!");
+          errorHandler("test", "videosLoaded()")
         }
 
         if (selected === true) {
@@ -64,28 +62,26 @@
   };
 
   const waitHandler = async () => {
-    console.log("timeout set")
     setTimeout(function () {
       videosLoaded();
     }, 500);
   }
 
   const scriptStop = async () => {
-    console.log("script stop");
-    var styleSheet = document.createElement("style");
+    var styleSheet = document.createElement("style")
     styleSheet.innerText = stylesrestore;
     document.head.appendChild(styleSheet);
   };
 
   const returnState = async (stateRequest) => {
    if (stateRequest === "latest"){
-    console.log("state => latest");
+    //console.log("state => latest");
     window.location.reload();
   } else {
     window.location.reload();
     setTimeout(function () {
     popularHandler.click();
-    console.log("state => popular");
+    //console.log("state => popular")
     }, 500)
   }
   };
@@ -120,7 +116,7 @@
     urlString = document.URL;
     if ((urlString.includes("videos") || urlString.includes("shorts") || urlString.includes("streams")) == true) {
       urlRefresh(urlString);
-      console.log("string includes videos or shorts");
+      //console.log("string includes videos or shorts")
       if (urlString.includes("videos")) {
         location = "videos";
       } else if (urlString.includes("shorts")) {
@@ -173,7 +169,7 @@
           ac.innerHTML = numdiv + "/" + videoNum;
 
           if (checkNum == numdiv) {
-            console.log(videoNum, numdiv);
+            //console.log(videoNum, numdiv);
             videosDiv.style.zIndex = "0";
             ac.style.display = "none";
             clearInterval(refreshInterval);
