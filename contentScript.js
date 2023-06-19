@@ -26,38 +26,43 @@
 
   const videosLoaded = async () => {
     const oldestBtnExists = document.getElementById("oldest-btn");
-
     if (!oldestBtnExists) {
+
       setTimeout(function () {
-        oldestBtn = document.createElement("yt-chip-cloud-chip-renderer");
+        const oldestChip = document.querySelectorAll('yt-formatted-string[title="Oldest"]');
 
-        oldestBtn.className = "style-scope " + "yt-chip-cloud-chip-renderer " + "oldest-btn";
-        oldestBtn.setAttribute("chip-style", "STYLE_DEFAULT");
-        oldestBtn.id = "oldest-btn";
-        addbutton = document.querySelectorAll("#chips")[0];
-        addbutton.appendChild(oldestBtn);
+        if (oldestChip.length > 0) {
+         // do nothing
+        } else {
+          oldestBtn = document.createElement("yt-chip-cloud-chip-renderer");
 
-        oldestBtn.addEventListener("click", buttonPressed);
+          oldestBtn.className = "style-scope " + "yt-chip-cloud-chip-renderer " + "oldest-btn";
+          oldestBtn.setAttribute("chip-style", "STYLE_DEFAULT");
+          oldestBtn.id = "oldest-btn";
+          addbutton = document.querySelectorAll("#chips")[0];
+          addbutton.appendChild(oldestBtn);
 
-        const text = document.querySelectorAll("#oldest-btn #text")[0];
-        text.removeAttribute("is-empty");
-        text.innerHTML = "Sort by: Oldest";
+          oldestBtn.addEventListener("click", buttonPressed);
 
-        if (!text) {
-          errorHandler("test", "videosLoaded()")
+          const text = document.querySelectorAll("#oldest-btn #text")[0];
+          text.removeAttribute("is-empty");
+          text.innerHTML = "Sort by: Oldest";
+
+          if (!text) {
+            errorHandler("test", "videosLoaded()")
+          }
+
+          if (selected === true) {
+            oldestBtn.setAttribute("selected", "true");
+          }
+
+          //watches for "Latest" or "Popular" buttons to be pressed to reinstate the oldest button
+          latestHandler = document.querySelectorAll("#chips")[0].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[0];
+          latestHandler.addEventListener("click", waitHandler);
+          popularHandler = document.querySelectorAll("#chips")[0].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[1];
+          popularHandler.addEventListener("click", waitHandler);
         }
-
-        if (selected === true) {
-          oldestBtn.setAttribute("selected", "true");
-        }
-
-        //watches for "Latest" or "Popular" buttons to be pressed to reinstate the oldest button
-        latestHandler = document.querySelectorAll("#chips")[0].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[0];
-        latestHandler.addEventListener("click", waitHandler);
-        popularHandler = document.querySelectorAll("#chips")[0].getElementsByClassName("style-scope ytd-feed-filter-chip-bar-renderer")[1];
-        popularHandler.addEventListener("click", waitHandler);
-
-      }, 500);
+      }, 500)
     }
   };
 
