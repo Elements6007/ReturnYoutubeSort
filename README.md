@@ -4,7 +4,9 @@
 [![JavaScript](https://img.shields.io/badge/--F7DF1E?logo=javascript&logoColor=000)](https://www.javascript.com/)
 
 [![Google Chrome](https://img.shields.io/badge/Google%20Chrome-4285F4?style=for-the-badge&logo=GoogleChrome&logoColor=white)](https://chrome.google.com/webstore/detail/sort-by-oldest/miglaibdlgminlepgeifekifakochlka) [![Firefox](https://img.shields.io/badge/Firefox-FF7139?style=for-the-badge&logo=Firefox-Browser&logoColor=white)](https://addons.mozilla.org/addon/sort-by-oldest/) 	[![Edge](https://img.shields.io/badge/Edge-0078D7?style=for-the-badge&logo=Microsoft-edge&logoColor=white)](https://microsoftedge.microsoft.com/addons/detail/sort-by-oldest/goommoejopdlpinofbhmkahjdciaepbi)
-# NEARING EOL
+# END OF LIFE
+YouTube has brought back this feature properly now.
+
 Thanks to everyone who used this extension and especially those who contributed with issues and PRs. It was a fun run.
 
 ## Return Youtube Sort By Oldest
